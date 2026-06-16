@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MythicOS</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -15,17 +15,18 @@
     </div>
 
     <div id="desktopApps">
-        <div class="desktop-icon" id="vaultIcon">
-            <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=150" alt="Vault Icon">
-            <p>Mythic Vault</p>
+        <div class="desktop-icon" id="notesIcon">
+            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=150" alt="Notes Icon">
+            <p>Notes</p>
         </div>
     </div>
 
     <div class="window" id="welcome">
         <div class="windowheader" id="welcomeheader">
             <div class="closebutton" id="welcomeclose"></div>
-            <p class="headertext">Welcome.app</p>
-            <div style="width: 12px;"></div> </div>
+            <p class="headertext">Welcome</p>
+            <div style="width: 12px;"></div> 
+        </div>
         
         <div class="window-content">
             <img class="avatar" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=200" alt="MythicOS Logo">
@@ -37,18 +38,19 @@
         </div>
     </div>
 
-    <div class="window" id="vault" style="width: 550px; height: 400px;">
-        <div class="windowheader" id="vaultheader">
-            <div class="closebutton" id="vaultclose"></div>
-            <p class="headertext">Mythic Vault</p>
-            <div style="width: 12px;"></div>
+    <div class="window" id="notes" style="width: 500px; height: 380px;">
+        <div class="windowheader" id="notesheader">
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <div class="closebutton" id="notesclose"></div>
+                <div class="maximizebutton" id="notesmaximize"></div>
+            </div>
+            
+            <p class="headertext">Notes</p>
+            <div style="width: 32px;"></div>
         </div>
         
-        <div class="app-container">
-            <div id="sidebar">
-                </div>
-            <div id="contentDisplay">
-                </div>
+        <div class="app-container" style="display: flex; flex-direction: column; flex: 1;">
+            <textarea id="notepad" placeholder="Write down your mythic logs, strategies, or scratchpad notes here..."></textarea>
         </div>
     </div>
 

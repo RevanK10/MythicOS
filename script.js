@@ -2,6 +2,7 @@ var biggestIndex = 10;
 var selectedIcon = null;
 var topBar = document.querySelector("#top");
 
+// --- 1. SYSTEM CLOCK COMPONENT ---
 function updateTime() {
     var currentTime = new Date().toLocaleString();
     var timeText = document.querySelector("#timeElement");
@@ -10,6 +11,7 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
+// --- 2. UNIVERSAL WINDOW INITIALIZATION ENGINE ---
 function initializeWindow(appName, customIconId = null) {
     var win = document.querySelector("#" + appName);
     var header = document.querySelector("#" + appName + "header");
@@ -53,6 +55,7 @@ function initializeWindow(appName, customIconId = null) {
     }
 }
 
+// --- 3. DISPLAY DEPTH LAYER MANAGEMENT ---
 function bringToFront(element) {
     biggestIndex++;
     element.style.zIndex = biggestIndex;
@@ -77,6 +80,7 @@ document.addEventListener("click", () => {
     if (selectedIcon) deselectIcon(selectedIcon);
 });
 
+// --- 4. WINDOW DRAG CONTROLS ---
 function dragElement(element) {
     var initialX = 0, initialY = 0, currentX = 0, currentY = 0;
     var header = document.getElementById(element.id + "header");
@@ -85,6 +89,9 @@ function dragElement(element) {
     else { element.onmousedown = startDragging; }
 
     function startDragging(e) {
+        // 🌟 FIX: If the window is currently full-screen, do not allow moving it!
+        if (element.classList.contains("fullscreen")) return;
+
         e = e || window.event;
         e.preventDefault();
         initialX = e.clientX;
@@ -103,7 +110,7 @@ function dragElement(element) {
         
         element.style.top = (element.offsetTop - currentY) + "px";
         element.style.left = (element.offsetLeft - currentX) + "px";
-        element.style.transform = "none"; // Stop translation jumping loops
+        element.style.transform = "none"; 
     }
 
     function stopDragging() {
@@ -112,54 +119,45 @@ function dragElement(element) {
     }
 }
 
-var vaultData = [
-    {
-        title: "Phoenix Blade",
-        type: "Artifact Class IV",
-        content: `
-            <h2 style="margin-bottom: 10px;">The Phoenix Blade</h2>
-            <p style="color: #666; font-style: italic; margin-bottom: 15px;">Forged in the heart of the Mt. Obsidian fissure.</p>
-            <p>This localized asset features active flame modification capabilities. Deals +45 heat structural degradation vectors against frost-based parameters.</p>
-            <div style="background: #FFF3CD; padding: 12px; border-left: 4px solid #FFC107; margin: 15px 0; border-radius: 4px;">
-                <strong>System Record:</strong> Currently locked inside vault inventory stasis matrix block #094.
-            </div>
-        `
-    },
-    {
-        title: "Chronos Mirror",
-        type: "Temporal Anchor",
-        content: `
-            <h2 style="margin-bottom: 10px;">The Chronos Mirror</h2>
-            <p style="color: #666; font-style: italic; margin-bottom: 15px;">Discovered within the shifting sands of the Lost Oasis.</p>
-            <p>Allows the runtime window operator to visually review log historical tracks up to 10 seconds backwards into active operational stream pipelines.</p>
-        `
-    }
-];
+// --- 5. NOTES LIVE DATA PERSISTENCE ENGINE ---
+var notepad = document.querySelector("#notepad");
 
-function setVaultContent(index) {
-    var view = document.querySelector("#contentDisplay");
-    if (view) view.innerHTML = vaultData[index].content;
+// Check memory blocks and instantly reload past records if they exist
+if (notepad && localStorage.getItem("mythic_notes_data")) {
+    notepad.value = localStorage.getItem("mythic_notes_data");
 }
 
-function buildVaultMenu() {
-    var sidebar = document.querySelector("#sidebar");
-    if (!sidebar) return;
-    sidebar.innerHTML = "";
-
-    vaultData.forEach((item, index) => {
-        var card = document.createElement("div");
-        card.className = "menu-card";
-        card.innerHTML = `
-            <h4 style="margin: 0; font-size: 13px; color: #111;">${item.title}</h4>
-            <p style="margin: 2px 0 0 0; font-size: 11px; color: #777;">${item.type}</p>
-        `;
-        card.addEventListener("click", () => setVaultContent(index));
-        sidebar.appendChild(card);
+// Real-time listener saving layout keystrokes instantly to browser memory
+if (notepad) {
+    notepad.addEventListener("input", () => {
+        localStorage.setItem("mythic_notes_data", notepad.value);
     });
-
-    if (vaultData.length > 0) setVaultContent(0);
 }
 
+// --- 6. CORE OPERATING SYSTEM INSTANTIATIONS ---
 initializeWindow("welcome");
-initializeWindow("vault", "vaultIcon");
-buildVaultMenu();
+initializeWindow("notes", "notesIcon"); // Activating your new notes engine
+
+// --- 7. FULLSCREEN TOGGLE SYSTEM ---
+var notesMaxBtn = document.querySelector("#notesmaximize");
+var notesWindow = document.querySelector("#notes");
+
+if (notesMaxBtn && notesWindow) {
+    notesMaxBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevents dragging handlers from jumping in
+        
+        // If we are exiting fullscreen, re-center the window neatly
+        if (notesWindow.classList.contains("fullscreen")) {
+            notesWindow.style.top = "50%";
+            notesWindow.style.left = "50%";
+            notesWindow.style.transform = "translate(-50%, -50%)";
+        } else {
+            // Clear manual drag values so CSS classes can take complete control
+            notesWindow.style.top = "";
+            notesWindow.style.left = "";
+            notesWindow.style.transform = "";
+        }
+        
+        notesWindow.classList.toggle("fullscreen");
+    });
+}
