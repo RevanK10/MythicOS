@@ -1,11 +1,7 @@
-// script.js
-
-// --- 1. ARCHITECTURE GLOBAL STATE ENGINE ---
 var biggestIndex = 10;
 var selectedIcon = null;
 var topBar = document.querySelector("#top");
 
-// --- 2. LIVE CLOCK COMPONENT ---
 function updateTime() {
     var currentTime = new Date().toLocaleString();
     var timeText = document.querySelector("#timeElement");
@@ -14,13 +10,11 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
-// --- 3. REUSABLE INITIALIZATION CONTROLLER ---
 function initializeWindow(appName, customIconId = null) {
     var win = document.querySelector("#" + appName);
     var header = document.querySelector("#" + appName + "header");
     var closeBtn = document.querySelector("#" + appName + "close");
     
-    // Automatically match the open launcher handle button configuration
     var openBtn = customIconId ? document.querySelector("#" + customIconId) : document.querySelector("#" + appName + "Open");
 
     if (win) {
@@ -42,7 +36,6 @@ function initializeWindow(appName, customIconId = null) {
         openBtn.addEventListener("click", (e) => {
             e.stopPropagation();
             
-            // Check if checking a desktop launcher icon framework
             if (openBtn.classList.contains("desktop-icon")) {
                 if (openBtn.classList.contains("selected")) {
                     deselectIcon(openBtn);
@@ -53,7 +46,6 @@ function initializeWindow(appName, customIconId = null) {
                     selectIcon(openBtn);
                 }
             } else {
-                // For simple plain navbar label button triggers
                 win.style.display = "flex";
                 bringToFront(win);
             }
@@ -61,7 +53,6 @@ function initializeWindow(appName, customIconId = null) {
     }
 }
 
-// Universal Layer Z-Depth Component Handler
 function bringToFront(element) {
     biggestIndex++;
     element.style.zIndex = biggestIndex;
@@ -82,12 +73,10 @@ function deselectIcon(element) {
     selectedIcon = null;
 }
 
-// Global click monitoring node to clear isolated desktop selections
 document.addEventListener("click", () => {
     if (selectedIcon) deselectIcon(selectedIcon);
 });
 
-// --- 4. STANDARD WINDOW DRAG MECHANISM ---
 function dragElement(element) {
     var initialX = 0, initialY = 0, currentX = 0, currentY = 0;
     var header = document.getElementById(element.id + "header");
@@ -123,8 +112,6 @@ function dragElement(element) {
     }
 }
 
-// --- 5. MYTHIC VAULT ADVANCED APPLICATION ENGINE ---
-// Customize this structural content completely away from standard templates
 var vaultData = [
     {
         title: "Phoenix Blade",
@@ -173,7 +160,6 @@ function buildVaultMenu() {
     if (vaultData.length > 0) setVaultContent(0);
 }
 
-// --- 6. SYSTEM OS BOOT INSTANTIATIONS ---
-initializeWindow("welcome"); // Links welcome open branding element
-initializeWindow("vault", "vaultIcon"); // Links desktop launcher application profile element
+initializeWindow("welcome");
+initializeWindow("vault", "vaultIcon");
 buildVaultMenu();
