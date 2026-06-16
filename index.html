@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MythicOS</title>
+    <style>
+        /* --- RESET & DESKTOP STYLING (Part 2) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Full-screen viewport height */
+            height: 100vh; 
+            /* High-quality mythical landscape background */
+            background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920'); 
+            background-size: cover;
+            background-position: center;
+            overflow: hidden; /* Prevents desktop scrollbars */
+        }
+
+        /* --- TOP BAR STYLING (Part 2) --- */
+        .top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 24px;
+            color: #ffffff;
+            
+            /* Glassmorphic blur effect */
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .os-branding {
+            font-weight: 700;
+            letter-spacing: 1px;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+
+        .system-status {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .clock {
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* --- APPLICATION WINDOW STYLING (Part 1 & 2) --- */
+        .window {
+            /* Positioning right in the center of the viewport */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            /* Box constraints and spacing */
+            width: 380px;
+            max-width: 90%;
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            
+            /* Sleek window border and background contrast */
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background-color: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: #ffffff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Welcome App Content Details */
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-bottom: 16px;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        .window h1 {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .window h3 {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .window p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="os-branding">⚡ MythicOS</div>
+        <div class="system-status">🔮 Realm Online</div>
+        <div class="clock" id="timeElement">Loading Time...</div>
+    </div>
+
+    <div class="window">
+        <img class="avatar" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=200" alt="MythicOS Logo">
+        
+        <h1>Welcome to MythicOS</h1>
+        <h3>Version 1.0.0 "Genesis"</h3>
+        
+        <p>
+            Your custom environment is ready. This architecture blends HTML5 structural frames, fluid CSS aesthetics, and reactive local clock engines. 
+        </p>
+    </div>
+
+    <script>
+        function updateTime() {
+            // 1. Fetch system clock strings
+            var currentTime = new Date().toLocaleString();
+            
+            // 2. Select the HTML text node via its ID
+            var timeText = document.querySelector("#timeElement");
+            
+            // 3. Swap the content placeholder for the live clock string
+            timeText.innerHTML = currentTime;
+        }
+
+        // Initialize immediately on boot
+        updateTime();
+
+        // Instruct the system to rerun the engine function every 1000ms (1 second)
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
