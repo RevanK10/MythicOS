@@ -1,14 +1,17 @@
 /**
  * ==========================================================================
- * 🔱 GLOBAL SYSTEM CORES & REGISTERS
+ * SYSTEMS AND HANDLERS
  * ==========================================================================
+ * Standard interactive layer handles depth manipulation, layout switches, 
+ * window dragging, and simplified mythological application actions.
  */
+
 let biggestIndex = 10;
 let selectedIcon = null;
 const topBar = document.querySelector("#top");
 let globalClockInterval = null;
 
-// --- 1. SYSTEM CLOCK COMPONENT ---
+// --- 1. SYSTEM TIME MONITOR ---
 function updateTime() {
     const now = new Date();
     const currentTime = now.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) + 
@@ -20,7 +23,7 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
-// --- 2. UNIVERSAL WINDOW INITIALIZATION ENGINE ---
+// --- 2. WINDOW CREATION AND INTERACTION HOOKS ---
 function initializeWindow(appName, customIconId = null) {
     const win = document.querySelector("#" + appName);
     const closeBtn = document.querySelector("#" + appName + "close");
@@ -62,7 +65,7 @@ function initializeWindow(appName, customIconId = null) {
     }
 }
 
-// --- 3. DISPLAY DEPTH LAYER MANAGEMENT ---
+// --- 3. LAYER AND INDEX DEPTH CONTROLS ---
 function bringToFront(element) {
     biggestIndex++;
     element.style.zIndex = biggestIndex;
@@ -85,7 +88,7 @@ document.addEventListener("click", () => {
     if (selectedIcon) deselectIcon(selectedIcon);
 });
 
-// --- 4. WINDOW DRAG CONTROLS ---
+// --- 4. WINDOW MOVEMENT LOGIC ---
 function dragElement(element) {
     let initialX = 0, initialY = 0, currentX = 0, currentY = 0;
     const header = document.getElementById(element.id + "header");
@@ -100,14 +103,13 @@ function dragElement(element) {
         if (element.classList.contains("fullscreen")) return;
         e = e || window.event;
         
-        // Prevent drag triggers when clicking standard UI controller systems
+        // Block movement triggers if user hits control points
         if (e.target.classList.contains("closebutton") || 
             e.target.classList.contains("minimizebutton") || 
             e.target.classList.contains("maximizebutton")) return;
             
         e.preventDefault();
         
-        // Offset window transform properties gracefully on first interactions
         if (element.style.transform && element.style.transform !== "none") {
             const rect = element.getBoundingClientRect();
             element.style.transform = "none";
@@ -139,18 +141,18 @@ function dragElement(element) {
     }
 }
 
-// --- 5. NOTES LIVE DATA PERSISTENCE ENGINE ---
+// --- 5. SAVED INSIGHTS STORAGE ---
 const notepad = document.querySelector("#notepad");
-if (notepad && localStorage.getItem("vedic_notes_data")) {
-    notepad.value = localStorage.getItem("vedic_notes_data");
+if (notepad && localStorage.getItem("mythic_notes_data")) {
+    notepad.value = localStorage.getItem("mythic_notes_data");
 }
 if (notepad) {
     notepad.addEventListener("input", () => {
-        localStorage.setItem("vedic_notes_data", notepad.value);
+        localStorage.setItem("mythic_notes_data", notepad.value);
     });
 }
 
-// --- 6. CORE OPERATING SYSTEM INSTANTIATIONS ---
+// --- 6. ATTACH HANDLERS TO WORKSPACE APPLICATIONS ---
 const appList = ["welcome", "notes", "searchApp", "settings", "filesApp", "cameraApp", "clockApp", "calculatorApp", "emailApp"];
 appList.forEach(app => {
     if (app === "notes") {
@@ -160,7 +162,7 @@ appList.forEach(app => {
     }
 });
 
-// --- 7. FULLSCREEN TOGGLE ACTIONS ---
+// --- 7. RE-SIZING PARAMETERS ---
 function setupFullscreenToggle(windowId, buttonId) {
     const maxBtn = document.querySelector("#" + buttonId);
     const win = document.querySelector("#" + windowId);
@@ -169,13 +171,11 @@ function setupFullscreenToggle(windowId, buttonId) {
             e.stopPropagation();
             if (win.classList.contains("fullscreen")) {
                 win.classList.remove("fullscreen");
-                // Revert to center parameters safely
                 win.style.top = "50%";
                 win.style.left = "50%";
                 win.style.transform = "translate(-50%, -50%)";
             } else {
                 win.classList.add("fullscreen");
-                // Clear styles to let the layout rules handle edge constraints
                 win.style.top = "";
                 win.style.left = "";
                 win.style.transform = "";
@@ -192,7 +192,7 @@ setupFullscreenToggle("clockApp", "clockAppmaximize");
 setupFullscreenToggle("calculatorApp", "calculatorAppmaximize");
 setupFullscreenToggle("emailApp", "emailAppmaximize");
 
-// --- 8. TRAY DOCK ANCHOR MANAGEMENT EVENT LISTENERS ---
+// --- 8. LOWER DOCK SELECTIONS ---
 const dockWelcomeBtn = document.querySelector("#dockWelcomeOpen");
 const dockNotesBtn = document.querySelector("#dockNotesOpen");
 const welcomeWindow = document.querySelector("#welcome");
@@ -211,33 +211,33 @@ if (dockNotesBtn && notesWindow) {
     });
 }
 
-// --- 9. WALLPAPER SWITCHING PREFERENCE DATA CONTROLS ---
+// --- 9. LOCAL AMBIENCE PREFERENCE CONTROLS ---
 const wallpaperButtons = document.querySelectorAll(".wallpaper-btn");
 wallpaperButtons.forEach(button => {
     button.addEventListener("click", () => {
         const newImageUrl = button.getAttribute("data-bg");
         document.body.style.backgroundImage = "url('" + newImageUrl + "')";
-        localStorage.setItem("vedic_os_wallpaper", newImageUrl);
+        localStorage.setItem("mythic_os_wallpaper", newImageUrl);
     });
 });
-const savedWallpaper = localStorage.getItem("vedic_os_wallpaper");
+const savedWallpaper = localStorage.getItem("mythic_os_wallpaper");
 if (savedWallpaper) {
     document.body.style.backgroundImage = "url('" + savedWallpaper + "')";
 }
 
-// --- 10. REAL-TIME VEDIC ORACLE SEARCH ENGINE ---
+// --- 10. DIVINE SIGHT DIRECTORY LOOKUP ---
 const searchInput = document.getElementById('searchInput');
 const resContainer = document.getElementById('searchResults');
 
 const initialLedgerHTML = `
-    <p style="color: #ffcc00; font-weight: 600; margin-bottom: 8px;">🔮 Divya Keyphrase Ledger:</p>
-    <p style="opacity: 0.6; font-style: italic; margin-bottom: 12px;">Your inputs filter data planes dynamically across coordinates:</p>
+    <p style="color: #ffcc00; font-weight: 600; margin-bottom: 8px;">Search Phrases:</p>
+    <p style="opacity: 0.6; font-style: italic; margin-bottom: 12px;">Type a word to find an app:</p>
     <ul style="padding-left: 18px; opacity: 0.8; line-height: 1.8; list-style-type: square;">
-        <li><b>"ganita"</b> or <b>"calculator"</b> — Reveal Vedic Matrix</li>
-        <li><b>"drishti"</b> or <b>"camera"</b> — Unshroud Sanjay Tele-Vision lens</li>
-        <li><b>"kaala"</b> or <b>"clock"</b> — Stream Cosmic Chronometer Dial</li>
-        <li><b>"astra"</b> or <b>"files"</b> — Unseal Artifact Reliquary vaults</li>
-        <li><b>"dharma"</b> or <b>"settings"</b> — Reshape Loka Wallpapers</li>
+        <li><b>"calculator"</b> or <b>"math"</b> — Compute values</li>
+        <li><b>"sight"</b> or <b>"vision"</b> — Invoke the Sanjaya Mirror</li>
+        <li><b>"chrono"</b> or <b>"time"</b> — Check cosmic positioning hours</li>
+        <li><b>"armory"</b> or <b>"files"</b> — Access the Sacred Weapons safe</li>
+        <li><b>"wallpaper"</b> or <b>"laws"</b> — Change current sky visuals</li>
     </ul>
 `;
 
@@ -252,38 +252,38 @@ if (searchInput && resContainer) {
             return;
         }
 
-        if (rawQuery === "calculator" || rawQuery === "ganita") {
+        if (rawQuery === "math" || rawQuery === "calc" || rawQuery === "calculator") {
             openSystemApp("calculatorApp");
-            resContainer.innerHTML = `<p style="color:#34c759;">⚡ Manifested the Vedic Ganita structural matrix array.</p>`;
+            resContainer.innerHTML = `<p style="color:#34c759;">Displaying the calculations board.</p>`;
             return;
         }
-        if (rawQuery === "camera" || rawQuery === "drishti") {
+        if (rawQuery === "sight" || rawQuery === "vision") {
             openSystemApp("cameraApp");
             startWebcam();
-            resContainer.innerHTML = `<p style="color:#34c759;">⚡ Piercing dimension barriers via Sanjaya Drishti Reflex Streams.</p>`;
+            resContainer.innerHTML = `<p style="color:#34c759;">Activating the divine mirror.</p>`;
             return;
         }
-        if (rawQuery === "clock" || rawQuery === "kaala") {
+        if (rawQuery === "time" || rawQuery === "chrono") {
             openSystemApp("clockApp");
             runBigClock();
-            resContainer.innerHTML = `<p style="color:#34c759;">⚡ Linked to absolute Mahakaala Celestial Alignment matrix.</p>`;
+            resContainer.innerHTML = `<p style="color:#34c759;">Aligning time monitoring metrics.</p>`;
             return;
         }
-        if (rawQuery === "files" || rawQuery === "astra") {
+        if (rawQuery === "armory" || rawQuery === "files") {
             openSystemApp("filesApp");
-            resContainer.innerHTML = `<p style="color:#34c759;">⚡ Unsealed divine Astra artifacts armor node registers.</p>`;
+            resContainer.innerHTML = `<p style="color:#34c759;">Accessing the sacred weapon inventory shelves.</p>`;
             return;
         }
-        if (rawQuery === "settings" || rawQuery === "dharma") {
+        if (rawQuery === "laws" || rawQuery === "dharma") {
             openSystemApp("settings");
-            resContainer.innerHTML = `<p style="color:#34c759;">⚡ Modifying foundational plane parameters via Dharma configuration layers.</p>`;
+            resContainer.innerHTML = `<p style="color:#34c759;">Loading sky environmental laws.</p>`;
             return;
         }
 
         resContainer.innerHTML = `
-            <p style="color:#ffcc00; margin-bottom: 10px;">Consulting wider data streams for "${searchInput.value}"...</p>
-            <div style="margin-bottom: 8px;"><a href="https://www.google.com/search?q=${encodeURIComponent(searchInput.value)}" target="_blank" style="color:#ffcc00; font-weight:600; text-decoration:none;">🌐 Astral Projection Search: Google</a></div>
-            <div><a href="https://en.wikipedia.org/wiki/${encodeURIComponent(searchInput.value)}" target="_blank" style="color:#ffcc00; font-weight:600; text-decoration:none;">📜 Great Alexandrian Archive (Wikipedia)</a></div>
+            <p style="color:#ffcc00; margin-bottom: 10px;">Searching standard indices for "${searchInput.value}"...</p>
+            <div style="margin-bottom: 8px;"><a href="https://www.google.com/search?q=${encodeURIComponent(searchInput.value)}" target="_blank" style="color:#ffcc00; font-weight:600; text-decoration:none;">🌐 External Search: Google</a></div>
+            <div><a href="https://en.wikipedia.org/wiki/${encodeURIComponent(searchInput.value)}" target="_blank" style="color:#ffcc00; font-weight:600; text-decoration:none;">📜 Historic Encyclopedias (Wikipedia)</a></div>
         `;
     });
 }
@@ -296,13 +296,13 @@ function openSystemApp(appId) {
     }
 }
 
-// --- 11. EXTRA EXPANSION HARDWARE CONTROLS ---
+// --- 11. MEDIA AND CALCULATOR FUNCTIONS ---
 let webcamStream = null;
 function startWebcam() {
     const video = document.getElementById('cameraVideo');
     const fallback = document.getElementById('cameraFallback');
     
-    if (webcamStream) stopWebcam(); // Clean swap check
+    if (webcamStream) stopWebcam();
 
     navigator.mediaDevices.getUserMedia({ video: true, audio: false })
         .then(stream => {
@@ -311,7 +311,7 @@ function startWebcam() {
             if(fallback) fallback.style.display = 'none';
         })
         .catch(() => { 
-            if(fallback) fallback.innerHTML = "Sanjaya lens obscured by heavy atmospheric matter."; 
+            if(fallback) fallback.innerHTML = "Camera permission blocked or hardware missing."; 
         });
 }
 
@@ -329,18 +329,17 @@ function runBigClock() {
     if (globalClockInterval) clearInterval(globalClockInterval);
 
     globalClockInterval = setInterval(() => {
-        const now = new Date();
         const win = document.getElementById('clockApp');
         if(win && win.style.display === 'none') { 
             clearInterval(globalClockInterval); 
             return; 
         }
+        const now = new Date();
         if(bClock) bClock.innerText = now.toTimeString().split(' ')[0];
         if(bDate) bDate.innerText = now.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     }, 1000);
 }
 
-// Global scope initialization for calculator bindings
 window.pressCalc = function(val) {
     const calcDisplay = document.getElementById('calcDisplay');
     if(calcDisplay) calcDisplay.value += val;
