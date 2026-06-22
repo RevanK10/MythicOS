@@ -3,57 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MythicOS</title>
+    <title>VedicOS - Mount Kailash Edition</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <div class="top-bar" id="top">
-        <div class="os-branding" id="welcomeOpen">MythicOS</div>
-        <div class="system-status">Realm Online</div>
-        <div class="clock" id="timeElement">Loading Time...</div>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <div class="os-branding" id="welcomeOpen">🔱 VedicOS</div>
+            <div class="top-bar-menu">Lokas</div>
+            <div class="top-bar-menu">Puranas</div>
+            <div class="top-bar-menu">Prana</div>
+            <div class="top-bar-menu">Mantras</div>
+        </div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+            <div class="system-status">✨ Brahmaloka Online</div>
+            <div class="clock" id="timeElement">Kaala Chronology...</div>
+        </div>
     </div>
 
     <div id="desktopApps">
         <div class="desktop-icon" id="notesIcon">
-            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=150" alt="Notes Icon">
-            <p>Notes</p>
+            <div class="app-icon-wrapper scroll-gradient">📜</div>
+            <p>Akashic Records</p>
         </div>
     </div>
 
-    <div class="window" id="welcome">
+    <div class="window" id="welcome" style="width: 420px; height: 380px;">
         <div class="windowheader" id="welcomeheader">
-            <div class="closebutton" id="welcomeclose"></div>
-            <p class="headertext">Welcome</p>
-            <div style="width: 12px;"></div> 
+            <div class="apple-controls">
+                <div class="closebutton" id="welcomeclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
+                <div class="maximizebutton-disabled"></div>
+            </div>
+            <p class="headertext">Sanatana Manifest</p>
+            <div style="width: 52px;"></div> 
         </div>
-        
         <div class="window-content">
-            <img class="avatar" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=200" alt="MythicOS Logo">
-            <h1>Welcome to MythicOS</h1>
-            <h3>Version 1.0.0</h3>
-            <p>
-                Your custom environment is ready. This architecture blends HTML5 structural frames, fluid CSS aesthetics, and reactive local clock engines. 
-            </p>
+            <div class="mythic-avatar">🔱</div>
+            <h1>VedicOS Pantheonic</h1>
+            <h3>Divine Architecture v3.0.0</h3>
+            <p style="text-align: center; color: rgba(255,255,255,0.75);">Your workstation environment is operating out of Mt. Kailash nodes cleanly.</p>
         </div>
     </div>
 
-    <div class="window" id="notes" style="width: 500px; height: 380px;">
+    <div class="window" id="notes" style="width: 550px; height: 420px;">
         <div class="windowheader" id="notesheader">
-            <div style="display: flex; gap: 8px; align-items: center;">
+            <div class="apple-controls">
                 <div class="closebutton" id="notesclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
                 <div class="maximizebutton" id="notesmaximize"></div>
             </div>
-            
-            <p class="headertext">Notes</p>
-            <div style="width: 32px;"></div>
+            <p class="headertext">Akashic Records (Notes)</p>
+            <div style="width: 52px;"></div>
         </div>
-        
         <div class="app-container" style="display: flex; flex-direction: column; flex: 1;">
-            <textarea id="notepad" placeholder="Write down your mythic logs, strategies, or scratchpad notes here..."></textarea>
+            <textarea id="notepad" placeholder="Carve down your cosmic chronicles and observations here..."></textarea>
         </div>
     </div>
 
+    <div class="window" id="searchApp" style="width: 520px; height: 400px;">
+        <div class="windowheader" id="searchAppheader">
+            <div class="apple-controls">
+                <div class="closebutton" id="searchAppclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
+                <div class="maximizebutton" id="searchAppmaximize"></div>
+            </div>
+            <p class="headertext">The Divya Sight</p>
+            <div style="width: 52px;"></div>
+        </div>
+        <div class="window-content" style="justify-content: flex-start; padding: 20px;">
+            <div style="display: flex; width: 100%; gap: 10px; margin-bottom: 18px;">
+                <input type="text" id="searchInput" placeholder="Summon dynamic realms (e.g., Astra, Kaala)..." style="flex: 1; padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); color: #fff; outline: none; font-size: 0.9rem;">
+            </div>
+            <div id="searchResults" style="width: 100%; flex: 1; border-radius: 12px; background: rgba(0,0,0,0.3); padding: 16px; text-align: left; font-size: 0.85rem; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05);">
+                </div>
+        </div>
+    </div>
+
+    <div class="window" id="settings" style="width: 480px; height: 340px;">
+        <div class="windowheader" id="settingsheader">
+            <div class="apple-controls">
+                <div class="closebutton" id="settingsclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
+                <div class="maximizebutton" id="settingsmaximize"></div>
+            </div>
+            <p class="headertext">Dharma Laws</p>
+            <div style="width: 52px;"></div>
+        </div>
+        <div class="window-content" style="text-align: left; padding: 24px; justify-content: flex-start; align-items: flex-start;">
+            <h2 style="margin-bottom: 12px; font-size: 1.2rem; font-weight: 600; color: #ffcc00;">Alter Plane Tapestry</h2>
+            <p style="margin-bottom: 16px; opacity: 0.7;">Choose a panoramic matrix background framework:</p>
+            <div class="wallpaper-options">
+                <button class="wallpaper-btn" data-bg="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920">Surya Aura</button>
+                <button class="wallpaper-btn" data-bg="https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=1920">Soma Transcendence</button>
+                <button class="wallpaper-btn" data-bg="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1920">Rudra Fire</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="window" id="filesApp" style="width: 500px; height: 360px;">
+        <div class="windowheader" id="filesAppheader">
+            <div class="apple-controls">
+                <div class="closebutton" id="filesAppclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
+                <div class="maximizebutton" id="filesAppmaximize"></div>
+            </div>
+            <p class="headertext">Vault of Astra</p>
+            <div style="width: 52px;"></div>
+        </div>
+        <div class="window-content" style="justify-content: flex-start; padding: 20px;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; text-align: center; margin-top: 10px;">
+                <div class="file-item" onclick="alert('Mantra verification required for Trishula Core.')">
+                    <span style="font-size: 2rem;">🔱</span>
+                    <p style="font-size:0.75rem; margin-top:6px; font-weight:500;">Shiva Trishul</p>
+                </div>
+                <div class="file-item" onclick="alert('Divya artifacts registry is sealed.')">
+                    <span style="font-size: 2rem;">🐚</span>
+                    <p style="font-size:0.75rem; margin-top:6px; font-weight:500;">Panchajanya</p>
+                </div>
+                <div class="file-item" onclick="alert('Deploying cosmic energy arrays.')">
+                    <span style="font-size: 2rem;">💿</span>
+                    <p style="font-size:0.75rem; margin-top:6px; font-weight:500;">Sudarshana</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="window" id="cameraApp" style="width: 480px; height: 380px;">
+        <div class="windowheader" id="cameraAppheader">
+            <div class="apple-controls">
+                <div class="closebutton" id="cameraAppclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
+                <div class="maximizebutton" id="cameraAppmaximize"></div>
+            </div>
+            <p class="headertext">Sanjaya Drishti Lens</p>
+            <div style="width: 52px;"></div>
+        </div>
+        <div class="window-content" style="padding: 0; background: #000; overflow: hidden; position: relative;">
+            <video id="cameraVideo" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover; background: #111;"></video>
+            <div id="cameraFallback" style="position: absolute; color: rgba(255,255,255,0.5); font-size: 0.85rem; text-align: center; width:100%;">Aligning astral mirrors...</div>
+        </div>
+    </div>
+
+    <div class="window" id="clockApp" style="width: 440px; height: 320px;">
+        <div class="windowheader" id="clockAppheader">
+            <div class="apple-controls">
+                <div class="closebutton" id="clockAppclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
+                <div class="maximizebutton" id="clockAppmaximize"></div>
+            </div>
+            <p class="headertext">Mahakaala Cosmic Dial</p>
+            <div style="width: 52px;"></div>
+        </div>
+        <div class="window-content" style="padding: 24px; text-align: center;">
+            <div id="bigClockDisplay" style="font-size: 3rem; font-weight: 700; letter-spacing: 2px; color: #ffcc00; margin-bottom: 6px; text-shadow: 0 0 20px rgba(255,204,0,0.2);">00:00:00</div>
+            <div id="bigDateDisplay" style="font-size: 0.9rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Yuga Alignment Streaming...</div>
+        </div>
+    </div>
+
+    <div class="window" id="calculatorApp" style="width: 420px; height: 460px;">
+        <div class="windowheader" id="calculatorAppheader">
+            <div class="apple-controls">
+                <div class="closebutton" id="calculatorAppclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
+                <div class="maximizebutton" id="calculatorAppmaximize"></div>
+            </div>
+            <p class="headertext">Vedic Ganita Matrix</p>
+            <div style="width: 52px;"></div>
+        </div>
+        <div class="window-content" style="padding: 16px; background-color: rgba(10, 10, 15, 0.8); justify-content: flex-start;">
+            <input type="text" id="calcDisplay" readonly style="width: 100%; padding: 16px; font-size: 2rem; text-align: right; border: none; background: rgba(0,0,0,0.4); color: #fff; border-radius: 12px; margin-bottom: 14px; font-family: monospace; outline:none;">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; flex: 1;">
+                <button class="calc-btn gold-accent" onclick="clearCalc()">C</button>
+                <button class="calc-btn op-btn" onclick="pressCalc('/')">÷</button>
+                <button class="calc-btn op-btn" onclick="pressCalc('*')">×</button>
+                <button class="calc-btn op-btn" onclick="pressCalc('-')">−</button>
+                <button class="calc-btn num-btn" onclick="pressCalc('7')">7</button>
+                <button class="calc-btn num-btn" onclick="pressCalc('8')">8</button>
+                <button class="calc-btn num-btn" onclick="pressCalc('9')">9</button>
+                <button class="calc-btn op-btn" onclick="pressCalc('+')">+</button>
+                <button class="calc-btn num-btn" onclick="pressCalc('4')">4</button>
+                <button class="calc-btn num-btn" onclick="pressCalc('5')">5</button>
+                <button class="calc-btn num-btn" onclick="pressCalc('6')">6</button>
+                <button class="calc-btn equal-btn" style="grid-row: span 2; background: #ff9500; color:#fff;" onclick="calculateResult()">=</button>
+                <button class="calc-btn num-btn" onclick="pressCalc('1')">1</button>
+                <button class="calc-btn num-btn" onclick="pressCalc('2')">2</button>
+                <button class="calc-btn num-btn" onclick="pressCalc('3')">3</button>
+                <button class="calc-btn num-btn" style="grid-column: span 2;" onclick="pressCalc('0')">0</button>
+                <button class="calc-btn num-btn" onclick="pressCalc('.')">.</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="window" id="emailApp" style="width: 620px; height: 440px;">
+        <div class="windowheader" id="emailAppheader">
+            <div class="apple-controls">
+                <div class="closebutton" id="emailAppclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
+                <div class="maximizebutton" id="emailAppmaximize"></div>
+            </div>
+            <p class="headertext">DevaMail Dispatcher</p>
+            <div style="width: 52px;"></div>
+        </div>
+        <div class="window-content mail-layout" style="padding: 0; flex-direction: row; justify-content: flex-start; align-items: stretch;">
+            <div class="mail-sidebar">
+                <button class="compose-btn" onclick="window.open('https://mail.google.com/mail/u/0/#co', '_blank')">✍️ Compose Scroll</button>
+                <ul class="mail-folders">
+                    <li class="active">📥 Inbound Prana</li>
+                    <li onclick="window.open('https://mail.google.com/mail/u/0/#sent', '_blank')">📤 Dispatched Mantras</li>
+                    <li onclick="window.open('https://mail.google.com/mail/u/0/#drafts', '_blank')">📝 Unformed Scrolls</li>
+                </ul>
+            </div>
+            <div class="mail-body">
+                <div class="mail-item-row" onclick="window.open('https://mail.google.com/mail', '_blank')">
+                    <div class="mail-meta"><b>Narada Muni</b> <span>Just Now</span></div>
+                    <p class="mail-subject">Cosmic Update: High alerts across Triloka network</p>
+                </div>
+                <div class="mail-item-row" onclick="window.open('https://mail.google.com/mail', '_blank')">
+                    <div class="mail-meta"><b>Vishwakarma Dev</b> <span>1 hr ago</span></div>
+                    <p class="mail-subject">Architecture Patch Notes: Lanka infrastructure update</p>
+                </div>
+                <div class="mail-banner">
+                    <p>Integrate directly with your earthly anchors:</p>
+                    <a href="https://mail.google.com" target="_blank" class="gmail-link-btn">Connect to Google Gmail Array</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
+        <div class="dock-container">
+            <div class="dock-icon" id="dockWelcomeOpen">
+                <div class="app-icon-wrapper welcome-gradient">🔱</div>
+                <span class="dock-tooltip">Sanatana Manifest</span>
+            </div>
+            <div class="dock-separator"></div>
+            <div class="dock-icon" id="dockNotesOpen">
+                <div class="app-icon-wrapper scroll-gradient">📜</div>
+                <span class="dock-tooltip">Akashic Records</span>
+            </div>
+            <div class="dock-separator"></div>
+            <div class="dock-icon" id="searchAppOpen">
+                <div class="app-icon-wrapper oracle-gradient">🔮</div>
+                <span class="dock-tooltip">The Divya Sight</span>
+            </div>
+            <div class="dock-separator"></div>
+            <div class="dock-icon" id="emailAppOpen">
+                <div class="app-icon-wrapper mail-gradient">🦅</div>
+                <span class="dock-tooltip">DevaMail Terminal</span>
+            </div>
+        </div>
+    </div>
+    //Attaches script.js to index.html for functionality for the OS.
     <script src="script.js"></script>
 </body>
 </html>

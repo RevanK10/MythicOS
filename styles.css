@@ -1,18 +1,26 @@
+/* ==========================================================================
+   🔱 GLOBAL RESET & BASE RULES
+   ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, \"SF Pro Display\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
     height: 100vh; 
-    background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920'); 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920'); 
     background-size: cover;
     background-position: center;
     overflow: hidden; 
+    user-select: none;
+    -webkit-user-select: none;
 }
 
+/* ==========================================================================
+   🍏 TOP VEDIC GLASS BAR
+   ========================================================================== */
 .top-bar {
     position: absolute;
     top: 0;
@@ -21,198 +29,491 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 24px;
+    padding: 4px 20px;
     color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 99999;
 }
 
 .os-branding {
     font-weight: 700;
-    letter-spacing: 1px;
-    background-color: rgba(255, 255, 255, 0.15);
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 0.95rem;
     cursor: pointer;
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+}
+
+.top-bar-menu {
+    display: inline-block;
+    margin-left: 4px;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: opacity 0.15s;
+}
+.top-bar-menu:hover {
+    opacity: 1;
 }
 
 .system-status {
-    font-style: italic;
-    opacity: 0.9;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .clock {
-    font-weight: 500;
-    background-color: rgba(255, 255, 255, 0.15);
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 0.95rem;
+    letter-spacing: 0.5px;
 }
 
+/* ==========================================================================
+   🌌 DESKTOP ICONS
+   ========================================================================== */
 #desktopApps {
-    padding-top: 70px;
-    padding-left: 24px;
+    position: absolute;
+    top: 50px;
+    left: 20px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    width: fit-content;
+    gap: 24px;
+    z-index: 5;
 }
 
 .desktop-icon {
-    text-align: center;
-    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85px;
     cursor: pointer;
+    text-align: center;
     padding: 8px;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-    user-select: none;
-}
-
-.desktop-icon img {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    display: block;
-    margin: 0 auto 6px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: background-color 0.1s;
 }
 
 .desktop-icon p {
-    color: white;
-    font-size: 11px;
+    color: #ffffff;
+    font-size: 0.75rem;
+    margin-top: 8px;
     font-weight: 500;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    line-height: 1.2;
 }
 
+.desktop-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.desktop-icon.selected {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   🖼️ UNIVERSAL WINDOW MANAGEMENT (MYTHIC ARCHITECTURE)
+   ========================================================================== */
 .window {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none;
-    flex-direction: column;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background-color: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    color: #ffffff;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    overflow: hidden;
-}
-
-.windowheader {
-    width: 100%;
+    background-color: rgba(22, 22, 28, 0.7);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.25);
-    padding: 10px 16px;
-    cursor: grab;
-    user-select: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 10;
 }
 
-.windowheader:active {
-    cursor: grabbing;
+.window.fullscreen {
+    width: 100vw !important;
+    height: calc(100vh - 29px) !important;
+    top: 29px !important;
+    left: 0 !important;
+    transform: none !important;
+    border-radius: 0 !important;
+}
+
+/* Header Context */
+.windowheader {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: move;
 }
 
 .headertext {
-    margin: 0;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.8rem;
     font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    pointer-events: none;
 }
 
-.closebutton {
+/* System View Engine Components */
+.window-content {
+    padding: 16px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* ==========================================================================
+   🍏 MAC-STYLE WINDOW CONTROL SYSTEM
+   ========================================================================== */
+.apple-controls {
+    display: flex;
+    gap: 8px;
+    width: 52px;
+}
+
+.closebutton, .minimizebutton, .maximizebutton, .maximizebutton-disabled {
     width: 12px;
     height: 12px;
+    border-radius: 50%;
+    position: relative;
     cursor: pointer;
-    background-color: #EC6B5E;
-    border-radius: 50%;
-    border: solid 1px rgba(0, 0, 0, 0.2);
 }
 
-.window-content {
-    padding: 24px;
-    text-align: center;
+.closebutton { background-color: #ff5f56; border: 0.5px solid #e0443e; }
+.minimizebutton { background-color: #ffbd2e; border: 0.5px solid #dea123; }
+.maximizebutton { background-color: #27c93f; border: 0.5px solid #1aab29; }
+.maximizebutton-disabled { background-color: rgba(255,255,255,0.1); border: 0.5px solid rgba(255,255,255,0.05); cursor: default; }
+
+.windowheader:hover .closebutton::before {
+    content: "×";
+    position: absolute;
+    color: rgba(0,0,0,0.6);
+    font-size: 10px;
+    font-weight: 700;
+    top: -1px;
+    left: 3px;
+}
+.windowheader:hover .minimizebutton::before {
+    content: "−";
+    position: absolute;
+    color: rgba(0,0,0,0.6);
+    font-size: 10px;
+    font-weight: 700;
+    top: -2px;
+    left: 2.5px;
+}
+.windowheader:hover .maximizebutton::before {
+    content: "+";
+    position: absolute;
+    color: rgba(0,0,0,0.6);
+    font-size: 9px;
+    font-weight: 700;
+    top: -0.5px;
+    left: 2.5px;
 }
 
-.avatar {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    margin-bottom: 16px;
-    border: 3px solid #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    object-fit: cover;
-}
-
-.window h1 {
-    font-size: 1.8rem;
-    margin-bottom: 6px;
-    font-weight: 600;
-}
-
-.window h3 {
-    font-size: 1rem;
-    margin-bottom: 16px;
-    opacity: 0.8;
-    font-weight: 400;
-}
-
-.window p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    opacity: 0.9;
-}
-
-/* --- STREAMLINED NOTES CONTAINER STYLE --- */
+/* ==========================================================================
+   📜 CORE VEDIC NOTEPAD APPARATUS
+   ========================================================================== */
 .app-container {
-    display: flex;
     flex: 1;
-    background: #ffffff;
+    background: rgba(10, 10, 12, 0.4);
 }
 
 #notepad {
     width: 100%;
     height: 100%;
+    background: transparent;
     border: none;
-    padding: 20px;
-    font-size: 15px;
-    font-family: 'Courier New', Courier, monospace;
     resize: none;
-    outline: none;
-    background: #fffdf0; /* Classic soft paper background color */
-    color: #222222;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
     line-height: 1.6;
+    outline: none;
 }
 
 /* ==========================================================================
-   🌟 ADDED FULLSCREEN LAYOUT OVERRIDE STYLES 
+   🧮 SYSTEM GANITA (CALCULATOR) HARDWARE RENDERS
    ========================================================================== */
-
-/* Style layout rules for the green maximize button frame component */
-.maximizebutton {
-    width: 12px;
-    height: 12px;
+.calc-btn {
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    background-color: #27C93F; /* OS Style Emerald Green Accent Color */
-    border-radius: 50%;
-    border: solid 1px rgba(0, 0, 0, 0.2);
+    transition: filter 0.1s, transform 0.05s;
+}
+.calc-btn:active { transform: scale(0.97); }
+
+.num-btn { background-color: rgba(255, 255, 255, 0.08); color: #fff; }
+.num-btn:hover { background-color: rgba(255, 255, 255, 0.15); }
+
+.op-btn { background-color: rgba(255, 149, 0, 0.15); color: #ff9500; }
+.op-btn:hover { background-color: rgba(255, 149, 0, 0.25); }
+
+.gold-accent { background-color: rgba(255, 204, 0, 0.15); color: #ffcc00; }
+.gold-accent:hover { background-color: rgba(255, 204, 0, 0.25); }
+
+/* ==========================================================================
+   📬 DEVAMAIL INTERFACE (GMAIL INTEGRATION GATEWAY)
+   ========================================================================== */
+.mail-layout {
+    background-color: rgba(16, 16, 20, 0.85);
 }
 
-/* Global full-screen system viewport rule override logic mapping class */
-.window.fullscreen {
-    width: 100vw !important;
-    height: calc(100vh - 40px) !important; /* Spans workspace canvas canvas down from top-bar anchor zone */
-    top: 40px !important;
-    left: 0 !important;
-    transform: none !important;
-    border-radius: 0px !important; /* Squares corner panels to seamlessly align with structural screen margins */
+.mail-sidebar {
+    width: 190px;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.compose-btn {
+    width: 100%;
+    padding: 10px;
+    background: #ff9500;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.compose-btn:hover { background: #e08400; }
+
+.mail-folders {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mail-folders li {
+    font-size: 0.8rem;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.75;
+    transition: background 0.2s, opacity 0.2s;
+}
+.mail-folders li:hover, .mail-folders li.active {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+.mail-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.mail-item-row {
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.mail-item-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.mail-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+.mail-meta b { color: #ffcc00; }
+.mail-meta span { opacity: 0.5; font-size: 0.75rem; }
+
+.mail-subject {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mail-banner {
+    margin-top: auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+.mail-banner p {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-bottom: 10px;
+}
+
+.gmail-link-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: background 0.2s, border-color 0.2s;
+}
+.gmail-link-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   🖼️ OTHER SYSTEM ELEMENT RENDERS (SETTINGS / VAULT)
+   ========================================================================== */
+.wallpaper-options {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.wallpaper-btn {
+    flex: 1;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+.wallpaper-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-1px);
+}
+
+.file-item {
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+.file-item:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-2px);
+}
+
+.mythic-avatar {
+    font-size: 3.5rem;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 15px rgba(255,204,0,0.4));
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ==========================================================================
+   🍏 PARADISAL TRAY SYSTEM DOCK
+   ========================================================================== */
+.bottom-bar {
+    position: absolute;
+    bottom: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 999999;
+    pointer-events: none;
+}
+
+.dock-container {
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 10px 14px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    pointer-events: auto;
+}
+
+.dock-icon {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.dock-icon:hover {
+    transform: scale(1.2) translateY(-6px);
+}
+
+.app-icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* App Icon Gradients */
+.welcome-gradient { background: linear-gradient(135deg, #ffcc00, #ff9500); }
+.scroll-gradient { background: linear-gradient(135deg, #ff5e62, #ff9966); }
+.oracle-gradient { background: linear-gradient(135deg, #af52de, #5856d6); }
+.mail-gradient { background: linear-gradient(135deg, #007aff, #0051a8); }
+
+.dock-separator {
+    width: 1px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Tooltips */
+.dock-tooltip {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background-color: rgba(15, 15, 20, 0.9);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s, transform 0.15s;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.dock-icon:hover .dock-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
 }
