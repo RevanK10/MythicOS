@@ -1,11 +1,20 @@
-var biggestIndex = 10;
-var selectedIcon = null;
-var topBar = document.querySelector("#top");
+/**
+ * ==========================================================================
+ * 🔱 GLOBAL SYSTEM CORES & REGISTERS
+ * ==========================================================================
+ */
+let biggestIndex = 10;
+let selectedIcon = null;
+const topBar = document.querySelector("#top");
+let globalClockInterval = null;
 
 // --- 1. SYSTEM CLOCK COMPONENT ---
 function updateTime() {
-    var currentTime = new Date().toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) + " " + new Date().toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
-    var timeText = document.querySelector("#timeElement");
+    const now = new Date();
+    const currentTime = now.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) + 
+                        " " + 
+                        now.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+    const timeText = document.querySelector("#timeElement");
     if (timeText) timeText.innerHTML = currentTime;
 }
 updateTime();
@@ -13,11 +22,9 @@ setInterval(updateTime, 1000);
 
 // --- 2. UNIVERSAL WINDOW INITIALIZATION ENGINE ---
 function initializeWindow(appName, customIconId = null) {
-    var win = document.querySelector("#" + appName);
-    var header = document.querySelector("#" + appName + "header");
-    var closeBtn = document.querySelector("#" + appName + "close");
-    
-    var openBtn = customIconId ? document.querySelector("#" + customIconId) : document.querySelector("#" + appName + "Open");
+    const win = document.querySelector("#" + appName);
+    const closeBtn = document.querySelector("#" + appName + "close");
+    const openBtn = customIconId ? document.querySelector("#" + customIconId) : document.querySelector("#" + appName + "Open");
 
     if (win) {
         dragElement(win);
@@ -80,17 +87,34 @@ document.addEventListener("click", () => {
 
 // --- 4. WINDOW DRAG CONTROLS ---
 function dragElement(element) {
-    var initialX = 0, initialY = 0, currentX = 0, currentY = 0;
-    var header = document.getElementById(element.id + "header");
+    let initialX = 0, initialY = 0, currentX = 0, currentY = 0;
+    const header = document.getElementById(element.id + "header");
     
-    if (header) { header.onmousedown = startDragging; } 
-    else { element.onmousedown = startDragging; }
+    if (header) { 
+        header.onmousedown = startDragging; 
+    } else { 
+        element.onmousedown = startDragging; 
+    }
 
     function startDragging(e) {
         if (element.classList.contains("fullscreen")) return;
         e = e || window.event;
-        if (e.target.classList.contains("closebutton") || e.target.classList.contains("minimizebutton") || e.target.classList.contains("maximizebutton")) return;
+        
+        // Prevent drag triggers when clicking standard UI controller systems
+        if (e.target.classList.contains("closebutton") || 
+            e.target.classList.contains("minimizebutton") || 
+            e.target.classList.contains("maximizebutton")) return;
+            
         e.preventDefault();
+        
+        // Offset window transform properties gracefully on first interactions
+        if (element.style.transform && element.style.transform !== "none") {
+            const rect = element.getBoundingClientRect();
+            element.style.transform = "none";
+            element.style.top = rect.top + "px";
+            element.style.left = rect.left + "px";
+        }
+
         initialX = e.clientX;
         initialY = e.clientY;
         document.onmouseup = stopDragging;
@@ -107,7 +131,6 @@ function dragElement(element) {
         
         element.style.top = (element.offsetTop - currentY) + "px";
         element.style.left = (element.offsetLeft - currentX) + "px";
-        element.style.transform = "none"; 
     }
 
     function stopDragging() {
@@ -117,7 +140,7 @@ function dragElement(element) {
 }
 
 // --- 5. NOTES LIVE DATA PERSISTENCE ENGINE ---
-var notepad = document.querySelector("#notepad");
+const notepad = document.querySelector("#notepad");
 if (notepad && localStorage.getItem("vedic_notes_data")) {
     notepad.value = localStorage.getItem("vedic_notes_data");
 }
@@ -128,33 +151,35 @@ if (notepad) {
 }
 
 // --- 6. CORE OPERATING SYSTEM INSTANTIATIONS ---
-initializeWindow("welcome");
-initializeWindow("notes", "notesIcon"); 
-initializeWindow("searchApp");
-initializeWindow("settings");
-initializeWindow("filesApp");
-initializeWindow("cameraApp");
-initializeWindow("clockApp");
-initializeWindow("calculatorApp");
-initializeWindow("emailApp");
+const appList = ["welcome", "notes", "searchApp", "settings", "filesApp", "cameraApp", "clockApp", "calculatorApp", "emailApp"];
+appList.forEach(app => {
+    if (app === "notes") {
+        initializeWindow(app, "notesIcon");
+    } else {
+        initializeWindow(app);
+    }
+});
 
 // --- 7. FULLSCREEN TOGGLE ACTIONS ---
 function setupFullscreenToggle(windowId, buttonId) {
-    var maxBtn = document.querySelector("#" + buttonId);
-    var win = document.querySelector("#" + windowId);
+    const maxBtn = document.querySelector("#" + buttonId);
+    const win = document.querySelector("#" + windowId);
     if (maxBtn && win) {
         maxBtn.addEventListener("click", (e) => {
             e.stopPropagation();
             if (win.classList.contains("fullscreen")) {
+                win.classList.remove("fullscreen");
+                // Revert to center parameters safely
                 win.style.top = "50%";
                 win.style.left = "50%";
                 win.style.transform = "translate(-50%, -50%)";
             } else {
+                win.classList.add("fullscreen");
+                // Clear styles to let the layout rules handle edge constraints
                 win.style.top = "";
                 win.style.left = "";
                 win.style.transform = "";
             }
-            win.classList.toggle("fullscreen");
         });
     }
 }
@@ -168,10 +193,10 @@ setupFullscreenToggle("calculatorApp", "calculatorAppmaximize");
 setupFullscreenToggle("emailApp", "emailAppmaximize");
 
 // --- 8. TRAY DOCK ANCHOR MANAGEMENT EVENT LISTENERS ---
-var dockWelcomeBtn = document.querySelector("#dockWelcomeOpen");
-var dockNotesBtn = document.querySelector("#dockNotesOpen");
-var welcomeWindow = document.querySelector("#welcome");
-var notesWindow = document.querySelector("#notes");
+const dockWelcomeBtn = document.querySelector("#dockWelcomeOpen");
+const dockNotesBtn = document.querySelector("#dockNotesOpen");
+const welcomeWindow = document.querySelector("#welcome");
+const notesWindow = document.querySelector("#notes");
 
 if (dockWelcomeBtn && welcomeWindow) {
     dockWelcomeBtn.addEventListener("click", () => {
@@ -187,24 +212,24 @@ if (dockNotesBtn && notesWindow) {
 }
 
 // --- 9. WALLPAPER SWITCHING PREFERENCE DATA CONTROLS ---
-var wallpaperButtons = document.querySelectorAll(".wallpaper-btn");
+const wallpaperButtons = document.querySelectorAll(".wallpaper-btn");
 wallpaperButtons.forEach(button => {
     button.addEventListener("click", () => {
-        var newImageUrl = button.getAttribute("data-bg");
+        const newImageUrl = button.getAttribute("data-bg");
         document.body.style.backgroundImage = "url('" + newImageUrl + "')";
         localStorage.setItem("vedic_os_wallpaper", newImageUrl);
     });
 });
-var savedWallpaper = localStorage.getItem("vedic_os_wallpaper");
+const savedWallpaper = localStorage.getItem("vedic_os_wallpaper");
 if (savedWallpaper) {
     document.body.style.backgroundImage = "url('" + savedWallpaper + "')";
 }
 
 // --- 10. REAL-TIME VEDIC ORACLE SEARCH ENGINE ---
-var searchInput = document.getElementById('searchInput');
-var resContainer = document.getElementById('searchResults');
+const searchInput = document.getElementById('searchInput');
+const resContainer = document.getElementById('searchResults');
 
-var initialLedgerHTML = `
+const initialLedgerHTML = `
     <p style="color: #ffcc00; font-weight: 600; margin-bottom: 8px;">🔮 Divya Keyphrase Ledger:</p>
     <p style="opacity: 0.6; font-style: italic; margin-bottom: 12px;">Your inputs filter data planes dynamically across coordinates:</p>
     <ul style="padding-left: 18px; opacity: 0.8; line-height: 1.8; list-style-type: square;">
@@ -216,19 +241,17 @@ var initialLedgerHTML = `
     </ul>
 `;
 
-// Display initial state
 if (resContainer) resContainer.innerHTML = initialLedgerHTML;
 
 if (searchInput && resContainer) {
     searchInput.addEventListener('input', () => {
-        var rawQuery = searchInput.value.trim().toLowerCase();
+        const rawQuery = searchInput.value.trim().toLowerCase();
 
         if (!rawQuery) {
             resContainer.innerHTML = initialLedgerHTML;
             return;
         }
 
-        // Live matches logic
         if (rawQuery === "calculator" || rawQuery === "ganita") {
             openSystemApp("calculatorApp");
             resContainer.innerHTML = `<p style="color:#34c759;">⚡ Manifested the Vedic Ganita structural matrix array.</p>`;
@@ -257,7 +280,6 @@ if (searchInput && resContainer) {
             return;
         }
 
-        // Realtime External Anchor Search fallback
         resContainer.innerHTML = `
             <p style="color:#ffcc00; margin-bottom: 10px;">Consulting wider data streams for "${searchInput.value}"...</p>
             <div style="margin-bottom: 8px;"><a href="https://www.google.com/search?q=${encodeURIComponent(searchInput.value)}" target="_blank" style="color:#ffcc00; font-weight:600; text-decoration:none;">🌐 Astral Projection Search: Google</a></div>
@@ -267,7 +289,7 @@ if (searchInput && resContainer) {
 }
 
 function openSystemApp(appId) {
-    var targetWin = document.getElementById(appId);
+    const targetWin = document.getElementById(appId);
     if(targetWin) {
         targetWin.style.display = "flex";
         bringToFront(targetWin);
@@ -275,18 +297,24 @@ function openSystemApp(appId) {
 }
 
 // --- 11. EXTRA EXPANSION HARDWARE CONTROLS ---
-var webcamStream = null;
+let webcamStream = null;
 function startWebcam() {
-    var video = document.getElementById('cameraVideo');
-    var fallback = document.getElementById('cameraFallback');
+    const video = document.getElementById('cameraVideo');
+    const fallback = document.getElementById('cameraFallback');
+    
+    if (webcamStream) stopWebcam(); // Clean swap check
+
     navigator.mediaDevices.getUserMedia({ video: true, audio: false })
         .then(stream => {
             webcamStream = stream;
             if(video) video.srcObject = stream;
             if(fallback) fallback.style.display = 'none';
         })
-        .catch(() => { if(fallback) fallback.innerHTML = "Sanjaya lens obscured by heavy atmospheric matter."; });
+        .catch(() => { 
+            if(fallback) fallback.innerHTML = "Sanjaya lens obscured by heavy atmospheric matter."; 
+        });
 }
+
 function stopWebcam() {
     if (webcamStream) {
         webcamStream.getTracks().forEach(track => track.stop());
@@ -295,24 +323,41 @@ function stopWebcam() {
 }
 
 function runBigClock() {
-    var bClock = document.getElementById('bigClockDisplay');
-    var bDate = document.getElementById('bigDateDisplay');
-    var clockTimer = setInterval(() => {
-        var now = new Date();
-        var win = document.getElementById('clockApp');
-        if(win && win.style.display === 'none') { clearInterval(clockTimer); return; }
+    const bClock = document.getElementById('bigClockDisplay');
+    const bDate = document.getElementById('bigDateDisplay');
+    
+    if (globalClockInterval) clearInterval(globalClockInterval);
+
+    globalClockInterval = setInterval(() => {
+        const now = new Date();
+        const win = document.getElementById('clockApp');
+        if(win && win.style.display === 'none') { 
+            clearInterval(globalClockInterval); 
+            return; 
+        }
         if(bClock) bClock.innerText = now.toTimeString().split(' ')[0];
         if(bDate) bDate.innerText = now.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     }, 1000);
 }
 
-var calcDisplay = document.getElementById('calcDisplay');
-function pressCalc(val) { if(calcDisplay) calcDisplay.value += val; }
-function clearCalc() { if(calcDisplay) calcDisplay.value = ''; }
-function calculateResult() {
+// Global scope initialization for calculator bindings
+window.pressCalc = function(val) {
+    const calcDisplay = document.getElementById('calcDisplay');
+    if(calcDisplay) calcDisplay.value += val;
+}
+
+window.clearCalc = function() {
+    const calcDisplay = document.getElementById('calcDisplay');
+    if(calcDisplay) calcDisplay.value = '';
+}
+
+window.calculateResult = function() {
+    const calcDisplay = document.getElementById('calcDisplay');
     if(!calcDisplay) return;
     try {
-        var outcome = Function('"use strict";return (' + calcDisplay.value + ')')();
+        const outcome = Function('"use strict";return (' + calcDisplay.value + ')')();
         calcDisplay.value = outcome !== undefined ? outcome : '';
-    } catch(err) { calcDisplay.value = 'Error'; }
+    } catch(err) { 
+        calcDisplay.value = 'Error'; 
+    }
 }
