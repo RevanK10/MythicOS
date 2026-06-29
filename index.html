@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VedicOS</title>
+    <title>MythicOS</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,150 +20,120 @@
     <div id="desktopApps">
         <div class="desktop-icon" id="notesIcon">
             <div class="app-icon-wrapper scroll-gradient">📜</div>
-            <p>Scared Scrolls</p>
+            <p>Ancient Scrolls</p>
         </div>
     </div>
 
     <div class="window" id="welcome" style="width: 420px; height: 380px; display: none;">
         <div class="windowheader" id="welcomeheader">
-            <div class="apple-controls">
+            <div class="realm-controls">
                 <div class="closebutton" id="welcomeclose"></div>
                 <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
                 <div class="maximizebutton-disabled"></div>
             </div>
-            <p class="headertext">Welcome</p>
+            <p class="headertext">Welcome Nexus</p>
             <div style="width: 52px;"></div> 
         </div>
         <div class="window-content">
-            <div class="mythic-avatar">🔱</div>
+            <div class="mythic-avatar">🏰</div>
             <h1>MythicOS</h1>
-            <h3>Divine Realm v1.0.0</h3>
-            <p style="text-align: center; color: rgba(255,255,255,0.75); margin-top: 10px;">Your focus point is safely anchored at the peaks of Himalayas.</p>
+            <h3>Citadel Edition v1.2.0</h3>
+            <p style="text-align: center; color: rgba(255,255,255,0.75); margin-top: 10px;">Your workspace is safely bounded within the high sanctuary coordinate array.</p>
         </div>
     </div>
 
     <div class="window" id="notes" style="width: 550px; height: 420px; display: none;">
         <div class="windowheader" id="notesheader">
-            <div class="apple-controls">
+            <div class="realm-controls">
                 <div class="closebutton" id="notesclose"></div>
                 <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
                 <div class="maximizebutton" id="notesmaximize"></div>
             </div>
-            <p class="headertext">Sacred Scrolls</p>
+            <p class="headertext">Ancient Scrolls</p>
             <div style="width: 52px;"></div>
         </div>
         <div class="app-container" style="display: flex; flex-direction: column; flex: 1;">
-            <textarea id="notepad" placeholder="Carve down your cosmic observations and visions here..."></textarea>
+            <textarea id="notepad" placeholder="Carve your timeless insights and spells here..."></textarea>
         </div>
     </div>
 
-    <div class="window" id="searchApp" style="width: 520px; height: 400px; display: none;">
+    <div class="window" id="searchApp" style="width: 550px; height: 400px; display: none;">
         <div class="windowheader" id="searchAppheader">
-            <div class="apple-controls">
+            <div class="realm-controls">
                 <div class="closebutton" id="searchAppclose"></div>
                 <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
                 <div class="maximizebutton" id="searchAppmaximize"></div>
             </div>
-            <p class="headertext">Divine Sight</p>
+            <p class="headertext">Crystal Oracle</p>
             <div style="width: 52px;"></div>
         </div>
         <div class="window-content" style="justify-content: flex-start; padding: 20px;">
             <div style="display: flex; width: 100%; gap: 10px; margin-bottom: 18px;">
-                <input type="text" id="searchInput" placeholder="Whisper a domain name..." style="flex: 1; padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); color: #fff; outline: none; font-size: 0.9rem;">
+                <input type="text" id="searchInput" placeholder="Whisper an application name or keyword into the ether..." style="flex: 1; padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); color: #fff; outline: none; font-size: 0.9rem;">
             </div>
             <div id="searchResults" style="width: 100%; flex: 1; border-radius: 12px; background: rgba(0,0,0,0.3); padding: 16px; text-align: left; font-size: 0.85rem; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05);"></div>
         </div>
     </div>
 
-    <div class="window" id="settings" style="width: 480px; height: 340px; display: none;">
+    <div class="window" id="settings" style="width: 500px; height: 360px; display: none;">
         <div class="windowheader" id="settingsheader">
-            <div class="apple-controls">
+            <div class="realm-controls">
                 <div class="closebutton" id="settingsclose"></div>
                 <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
                 <div class="maximizebutton" id="settingsmaximize"></div>
             </div>
-            <p class="headertext">Laws of Dharma</p>
+            <p class="headertext">Cosmic Horizons</p>
             <div style="width: 52px;"></div>
         </div>
         <div class="window-content" style="text-align: left; padding: 24px; justify-content: flex-start; align-items: flex-start;">
-            <h2 style="margin-bottom: 12px; font-size: 1.2rem; font-weight: 600; color: #ffcc00;">Shift the Horizon</h2>
-            <p style="margin-bottom: 16px; opacity: 0.7;">Choose a new layout for the sky above you:</p>
+            <h2 style="margin-bottom: 12px; font-size: 1.2rem; font-weight: 600; color: #ffcc00;">Alter the Landscape</h2>
+            <p style="margin-bottom: 20px; opacity: 0.7; font-size: 0.9rem;">Choose a new planar projection to transform your desktop background environment:</p>
             <div class="wallpaper-options">
-                <button class="wallpaper-btn" data-bg="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920">Surya Aura</button>
-                <button class="wallpaper-btn" data-bg="https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=1920">Soma Sky</button>
-                <button class="wallpaper-btn" data-bg="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1920">Rudra Fire</button>
+                <button class="wallpaper-btn" data-bg="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920">Aether Rift</button>
+                <button class="wallpaper-btn" data-bg="https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=1920">Nebula Void</button>
+                <button class="wallpaper-btn" data-bg="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1920">Infernal Core</button>
             </div>
         </div>
     </div>
 
-    <div class="window" id="filesApp" style="width: 500px; height: 360px; display: none;">
+    <div class="window" id="filesApp" style="width: 650px; height: 440px; display: none;">
         <div class="windowheader" id="filesAppheader">
-            <div class="apple-controls">
+            <div class="realm-controls">
                 <div class="closebutton" id="filesAppclose"></div>
                 <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
                 <div class="maximizebutton" id="filesAppmaximize"></div>
             </div>
-            <p class="headertext">Armory of Astras</p>
+            <p class="headertext">Vault Arcanum</p>
             <div style="width: 52px;"></div>
         </div>
-        <div class="window-content" style="justify-content: flex-start; padding: 20px;">
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; text-align: center; margin-top: 10px;">
-                <div class="file-item" onclick="alert('Biometric verification required to lift the trident. Coming Soon...')">
-                    <p style="font-size:0.75rem; margin-top:6px; font-weight:500;">Fire Trident</p>
-                </div>
-                <div class="file-item" onclick="alert('The divine conch is sealed in resting state. Coming Soon...')">
-                    <p style="font-size:0.75rem; margin-top:6px; font-weight:500;">Conch of War</p>
-                </div>
-                <div class="file-item" onclick="alert('Invoking the solar wheel requires deep meditation. Coming Soon...')">
-                    <p style="font-size:0.75rem; margin-top:6px; font-weight:500;">Solar Disk</p>
-                </div>
+        <div class="window-content" style="flex-direction: row; padding: 0; align-items: stretch; justify-content: flex-start;">
+            <div class="mail-sidebar" style="width: 150px; border-right: 1px solid rgba(255,255,255,0.08);">
+                <ul class="mail-folders" id="vaultDirectories">
+                    <li class="active" onclick="switchDirectory('weapons')">Relics</li>
+                    <li onclick="switchDirectory('tomes')">Grimoires</li>
+                    <li onclick="switchDirectory('scrolls')">Decrees</li>
+                </ul>
+            </div>
+            <div style="flex: 1; padding: 16px; overflow-y: auto;" id="vaultGrid"></div>
+            <div id="vaultEditor" style="width: 260px; background: rgba(0,0,0,0.25); border-left: 1px solid rgba(255,255,255,0.08); padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+                <h4 id="editorFileName" style="font-size: 0.85rem; color: #ffcc00; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">No Scroll Opened</h4>
+                <textarea id="editorFileContent" placeholder="Select a scroll artifact to rewrite its internal configurations..." disabled style="flex: 1; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; padding: 10px; font-size: 0.8rem; resize: none; outline: none; line-height: 1.4;"></textarea>
+                <button id="editorSaveBtn" class="compose-btn" disabled onclick="saveCurrentFile()" style="padding: 8px; font-size: 0.75rem;">Save Manifest</button>
             </div>
         </div>
     </div>
 
-    <div class="window" id="cameraApp" style="width: 480px; height: 380px; display: none;">
-        <div class="windowheader" id="cameraAppheader">
-            <div class="apple-controls">
-                <div class="closebutton" id="cameraAppclose"></div>
-                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
-                <div class="maximizebutton" id="cameraAppmaximize"></div>
-            </div>
-            <p class="headertext">Sanjaya's Vision</p>
-            <div style="width: 52px;"></div>
-        </div>
-        <div class="window-content" style="padding: 0; background: #000; overflow: hidden; position: relative;">
-            <video id="cameraVideo" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover; background: #111;"></video>
-            <div id="cameraFallback" style="position: absolute; color: rgba(255,255,255,0.5); font-size: 0.85rem; text-align: center; width:100%;">Polishing the mirror of sight...</div>
-        </div>
-    </div>
-
-    <div class="window" id="clockApp" style="width: 440px; height: 320px; display: none;">
-        <div class="windowheader" id="clockAppheader">
-            <div class="apple-controls">
-                <div class="closebutton" id="clockAppclose"></div>
-                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
-                <div class="maximizebutton" id="clockAppmaximize"></div>
-            </div>
-            <p class="headertext">Mahakaala Dial</p>
-            <div style="width: 52px;"></div>
-        </div>
-        <div class="window-content" style="padding: 24px; text-align: center;">
-            <div id="bigClockDisplay" style="font-size: 3rem; font-weight: 700; letter-spacing: 2px; color: #ffcc00; margin-bottom: 6px; text-shadow: 0 0 20px rgba(255,204,0,0.2);">00:00:00</div>
-            <div id="bigDateDisplay" style="font-size: 0.9rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Yuga Tides Streaming...</div>
-        </div>
-    </div>
-
-    <div class="window" id="calculatorApp" style="width: 420px; height: 460px; display: none;">
+    <div class="window" id="calculatorApp" style="width: 400px; height: 460px; display: none;">
         <div class="windowheader" id="calculatorAppheader">
-            <div class="apple-controls">
+            <div class="realm-controls">
                 <div class="closebutton" id="calculatorAppclose"></div>
                 <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
                 <div class="maximizebutton" id="calculatorAppmaximize"></div>
             </div>
-            <p class="headertext">Vedic Ganita</p>
+            <p class="headertext">Alchemical Matrices</p>
             <div style="width: 52px;"></div>
         </div>
-        <div class="window-content" style="padding: 16px; background-color: rgba(10, 10, 15, 0.8); justify-content: flex-start;">
+        <div class="window-content" style="padding: 16px; justify-content: flex-start;">
             <input type="text" id="calcDisplay" readonly style="width: 100%; padding: 16px; font-size: 2rem; text-align: right; border: none; background: rgba(0,0,0,0.4); color: #fff; border-radius: 12px; margin-bottom: 14px; font-family: monospace; outline:none;">
             <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; flex: 1;">
                 <button class="calc-btn gold-accent" onclick="clearCalc()">C</button>
@@ -187,62 +157,127 @@
         </div>
     </div>
 
-    <div class="window" id="emailApp" style="width: 620px; height: 440px; display: none;">
+    <div class="window" id="emailApp" style="width: 650px; height: 460px; display: none;">
         <div class="windowheader" id="emailAppheader">
-            <div class="apple-controls">
+            <div class="realm-controls">
                 <div class="closebutton" id="emailAppclose"></div>
                 <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
                 <div class="maximizebutton" id="emailAppmaximize"></div>
             </div>
-            <p class="headertext">God Mail Delivery</p>
+            <p class="headertext">Raven Post Dispatch</p>
             <div style="width: 52px;"></div>
         </div>
         <div class="window-content mail-layout" style="padding: 0; flex-direction: row; justify-content: flex-start; align-items: stretch;">
             <div class="mail-sidebar">
-                <button class="compose-btn" onclick="window.open('https://mail.google.com/mail/u/0/#co', '_blank')">✍️ Send Message</button>
+                <button class="compose-btn" onclick="composeMissive()">🦅 Dispatch Scroll</button>
                 <ul class="mail-folders">
-                    <li class="active">📥 Incoming Prayers</li>
-                    <li onclick="window.open('https://mail.google.com/mail/u/0/#sent', '_blank')">📤 Outgoing Blessings</li>
-                    <li onclick="window.open('https://mail.google.com/mail/u/0/#drafts', '_blank')">📝 Incomplete Decrees</li>
+                    <li class="active" id="folder-inbound" onclick="switchMailFolder('inbound')">Inbound Couriers</li>
+                    <li id="folder-outbound" onclick="switchMailFolder('outbound')">Transmitted Seals</li>
                 </ul>
             </div>
-            <div class="mail-body">
-                <div class="mail-item-row" onclick="window.open('https://mail.google.com/mail', '_blank')">
-                    <div class="mail-meta"><b>Narada Muni</b> <span>Just Now</span></div>
-                    <p class="mail-subject">Urgent: Balance disruptions detected across realms</p>
+            <div class="mail-body" id="mailList"></div>
+            <div class="mail-viewer" id="mailViewer" style="display: none;"></div>
+        </div>
+    </div>
+
+    <div class="window" id="musicApp" style="width: 460px; height: 380px; display: none;">
+        <div class="windowheader" id="musicAppheader">
+            <div class="realm-controls">
+                <div class="closebutton" id="musicAppclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
+                <div class="maximizebutton" id="musicAppmaximize"></div>
+            </div>
+            <p class="headertext">Bard's Choir</p>
+            <div style="width: 52px;"></div>
+        </div>
+        <div class="window-content" style="padding: 20px; justify-content: flex-start;">
+            <div class="audio-player-ui" style="text-align: center; width: 100%;">
+                <div class="track-artwork" style="font-size: 3.5rem; margin-bottom: 6px;">🎵</div>
+                <h3 id="currentTrackTitle" style="color: #ffcc00; margin-bottom: 2px; font-size: 1.1rem;">No Track Chanted</h3>
+                <p id="currentTrackArtist" style="font-size: 0.8rem; opacity: 0.6; margin-bottom: 12px;">Silence across the plains</p>
+                <div class="playback-bar" style="display:flex; align-items:center; gap:10px; margin-bottom: 16px;">
+                    <span style="font-size: 0.75rem; opacity: 0.6;" id="trackCurrentTime">0:00</span>
+                    <input type="range" id="trackProgress" value="0" min="0" max="100" style="flex:1; accent-color:#ff9500;">
+                    <span style="font-size: 0.75rem; opacity: 0.6;" id="trackDuration">0:00</span>
                 </div>
-                <div class="mail-item-row" onclick="window.open('https://mail.google.com/mail', '_blank')">
-                    <div class="mail-meta"><b>Vishwakarma Dev</b> <span>1 hr ago</span></div>
-                    <p class="mail-subject">Blueprints: Updates on the architectural designs</p>
-                </div>
-                <div class="mail-banner">
-                    <p>Link your earthly communication nodes:</p>
-                    <a href="https://mail.google.com" target="_blank" class="gmail-link-btn">Connect to Human Gmail Accounts</a>
+                <div class="playback-controls" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 16px;">
+                    <button onclick="prevTrack()" style="background:transparent; border:none; color:#fff; font-size:1.4rem; cursor:pointer;">⏮</button>
+                    <button id="playPauseBtn" onclick="togglePlayback()" style="background:#ff9500; border:none; color:#fff; font-size:1.6rem; width:50px; height:50px; border-radius:50%; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;">▶</button>
+                    <button onclick="nextTrack()" style="background:transparent; border:none; color:#fff; font-size:1.4rem; cursor:pointer;">⏭</button>
                 </div>
             </div>
+            <div style="width:100%; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px; overflow-y:auto; flex:1; text-align:left;">
+                <ul id="playlistItems" style="list-style:none; font-size:0.85rem;"></ul>
+            </div>
+        </div>
+        <audio id="audioNode" src=""></audio>
+    </div>
+
+    <div class="window" id="printerApp" style="width: 480px; height: 390px; display: none;">
+        <div class="windowheader" id="printerAppheader">
+            <div class="realm-controls">
+                <div class="closebutton" id="printerAppclose"></div>
+                <div class="minimizebutton" onclick="this.closest('.window').style.display='none'"></div>
+                <div class="maximizebutton" id="printerAppmaximize"></div>
+            </div>
+            <p class="headertext">Sigil Forge</p>
+            <div style="width: 52px;"></div>
+        </div>
+        <div class="window-content" style="padding: 20px; justify-content: flex-start; align-items: stretch;">
+            <h3 style="color:#ffcc00; margin-bottom:12px; font-size:1rem;">Inscribe Documents to Parchment</h3>
+            <textarea id="printerInput" placeholder="Draft text inside this container to forge hard copies..." style="width:100%; height:120px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.15); border-radius:8px; color:#fff; padding:12px; font-size:0.9rem; resize:none; outline:none; margin-bottom:14px;"></textarea>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; background:rgba(255,255,255,0.03); padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.05);">
+                <div>
+                    <p style="font-size:0.85rem; font-weight:600;">Active Forge Node:</p>
+                    <p style="font-size:0.75rem; opacity:0.6;">Ethereal Ink-Jet IX</p>
+                </div>
+                <span class="system-status" style="background:rgba(52, 199, 89, 0.2); color:#34c759; border-color:rgba(52, 199, 89, 0.3);">Ready</span>
+            </div>
+            <button class="compose-btn" onclick="forgeSigil()" style="background:#27c93f; width:100%; padding:12px; font-size:0.9rem;">✨ Execute Forge Inscription</button>
+            <div id="forgeStatusLog" style="margin-top:14px; font-size:0.8rem; text-align:center; font-weight:500;"></div>
         </div>
     </div>
 
     <div class="bottom-bar">
         <div class="dock-container">
             <div class="dock-icon" id="dockWelcomeOpen">
-                <div class="app-icon-wrapper welcome-gradient">🔱</div>
-                <span class="dock-tooltip">Manifest</span>
+                <div class="app-icon-wrapper welcome-gradient">🏰</div>
+                <span class="dock-tooltip">Manifest Nexus</span>
             </div>
             <div class="dock-separator"></div>
             <div class="dock-icon" id="dockNotesOpen">
                 <div class="app-icon-wrapper scroll-gradient">📜</div>
-                <span class="dock-tooltip">Akashic Scrolls</span>
+                <span class="dock-tooltip">Ancient Scrolls</span>
             </div>
             <div class="dock-separator"></div>
             <div class="dock-icon" id="searchAppOpen">
                 <div class="app-icon-wrapper oracle-gradient">🔮</div>
-                <span class="dock-tooltip">Divine Sight</span>
+                <span class="dock-tooltip">Crystal Oracle</span>
+            </div>
+            <div class="dock-separator"></div>
+            <div class="dock-icon" id="filesAppOpen">
+                <div class="app-icon-wrapper vault-gradient">💼</div>
+                <span class="dock-tooltip">Vault Arcanum</span>
             </div>
             <div class="dock-separator"></div>
             <div class="dock-icon" id="emailAppOpen">
                 <div class="app-icon-wrapper mail-gradient">🦅</div>
-                <span class="dock-tooltip">God Mail</span>
+                <span class="dock-tooltip">Raven Post</span>
+            </div>
+            <div class="dock-separator"></div>
+            <div class="dock-icon" id="musicAppOpen">
+                <div class="app-icon-wrapper music-gradient">🎵</div>
+                <span class="dock-tooltip">Bard's Choir</span>
+            </div>
+            <div class="dock-separator"></div>
+            <div class="dock-icon" id="settingsOpen">
+                <div class="app-icon-wrapper printer-gradient">⚙️</div>
+                <span class="dock-tooltip">Cosmic Horizons</span>
+            </div>
+            <div class="dock-separator"></div>
+            <div class="dock-icon" id="printerAppOpen">
+                <div class="app-icon-wrapper printer-gradient">🖨️</div>
+                <span class="dock-tooltip">Sigil Forge</span>
             </div>
         </div>
     </div>
