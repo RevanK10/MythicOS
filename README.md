@@ -1,36 +1,25 @@
 # MythicOS
 
-MythicOS is a myth-inspired web operating system simulation that merges the sleek user experience of modern desktop design with the rich, transcendent imagery of ancient Vedic cosmology. Operating out of the symbolic nodes of Mount Kailash, MythicOS serves as a conceptual workspace environment designed to monitor data planes, manage cosmic records, and look into dynamic realms across coordinates.
+MythicOS is a fun project that looks and acts like a computer desktop on a website. It mixes modern computer designs with theme styles based on fantasy elements. 
 
----
+## Main Features
 
-## Core Architecture & Features
+### Desktop Interface
+* **Top Bar:** A clear bar at the top of the screen that shows the name of the system and a live clock.
+* **Moving Windows:** You can drag windows around the screen, open them, close them, or make them full screen.
+* **Bottom App Dock:** A sleek bar at the bottom with icons to quickly open different apps.
 
-### Foundational Interface
-* **The Top Vedic Glass Bar:** A semi-transparent top utility panel that anchors the active system status indicators and streams real-time data chronologies.
-* **Universal Window Management:** A comprehensive window framework mimicking classic desktop controls. Features smooth drag operations, layer depth prioritizing, and multi-state view configurations.
-* **Paradisal Tray System Dock:** An elegant, interactive bottom panel housing application launch gates with smooth kinetic feedback overlays and intelligent descriptive tooltips.
+### Built-in Apps
+* **Ancient Scrolls (Notes):** A simple notepad where you can type out notes.
+* **Crystal Oracle (Search):** A search box. If you type secret code words like "math" or "music", it opens those apps for you.
+* **Vault Arcanum (Files):** A simple file manager where you can click files and edit text inside them.
+* **Alchemical Matrices (Calculator):** A grid calculator that lets you do quick math problems.
+* **Raven Post (Email):** A fake email app where you can read an inbox or type out messages to send.
+* **Bard's Choir (Music Player):** A music box where you can play songs, skip tracks, and track the music time.
+* **Sigil Forge (Printer):** A fun app where you can type text and hit print to open your browser's real print page.
+* **Cosmic Horizons (Settings):** A settings panel that lets you change the background picture. It even remembers your choice the next time you open the site.
 
-### Native Pantheonic Applications
-* **Akashic Records (Notes):** A live note-taking terminal with built-in data persistence to safely store user chronicles and data observations across browsing sessions.
-* **The Divya Sight (Dynamic Search Dashboard):** A specialized command bar designed to interpret conceptual keyphrases and execute targeted system configurations. Fallback workflows allow for broader global queries.
-* **Vedic Ganita Matrix (Calculator):** A custom mathematical layout configured for tracking numeric expressions with high precision.
-* **Sanjaya Drishti Lens (Hardware Interface):** A functional hardware gateway designed to tap into local video capture devices to process incoming environmental imagery.
-* **Mahakaala Cosmic Dial (Clock Engine):** A visual temporal tracker running real-time synchronization arrays to keep absolute local time.
-* **DevaMail Dispatcher (Mailing Node Shell):** An integrated communications terminal that acts as an earthly anchor directly to Google Mail architecture.
-* **Vault of Astra (File System Manager):** A visual registry interface mapping critical historical artifacts.
-
----
-
-## Configuration & Theming
-
-The environment's foundational canvas layout can be adapted in real-time through Dharma Configuration Layers. Users can shift the wallpaper parameters through distinct macro frameworks:
-* **Surya Aura:** A radiant, gold-toned energy state canvas.
-* **Soma Transcendence:** A deep, calm, monochromatic space layout.
-* **Rudra Fire:** A vibrant, highly energetic hue framework.
-
----
-
-## Project Structure
-
-The desktop workspace environment relies on a compact, modern design framework across three primary system components:
+## Files in the Project
+* **index.html:** Holds the main setup and structure of the pages.
+* **styles.css:** Holds the visual design, colors, and layouts.
+* **script.js:** Holds the code that makes windows drag, apps open, and buttons work.
